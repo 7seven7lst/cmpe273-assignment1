@@ -57,7 +57,8 @@ def get_or_delete_bookmark(bookmark_id):
         else:
             return {'reason': "Not Found"}, 404
     else:
-        del mydict[bookmark_id]
+        if mydict.get(bookmark_id):
+            del mydict[bookmark_id]
         return '', 204
 
 if __name__ == '__main__':
