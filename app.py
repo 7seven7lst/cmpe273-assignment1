@@ -23,9 +23,9 @@ def get_bookmark_qrcode(bookmark_id):
     bookmark_id = escape(bookmark_id)
     if mydict.get(bookmark_id):
         bookmark = mydict.get(bookmark_id)
-        pil_img = qrcode.make(bookmark['url'])
+        qr_img = qrcode.make(bookmark['url'])
         img_io = BytesIO()
-        pil_img.save(img_io, 'PNG')
+        qr_img.save(img_io, 'PNG')
         img_io.seek(0)
         return send_file(img_io, mimetype='image/png')
     else:
